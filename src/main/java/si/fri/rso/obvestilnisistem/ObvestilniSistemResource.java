@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.*;
+import java.io.*;
 
 import java.util.List;
 
@@ -25,7 +27,42 @@ public class ObvestilniSistemResource {
     @GET
     @Metered
     public Response getAllProfils() {
-        return Response.ok("test").build();
+        String output  = getUrlContents("http://api.rtvslo.si/spored/getProvys/TVS1/2017-12-09");
+
+        return Response.ok(output).build();
+    }
+
+    private static String getUrlContents(String theUrl)
+    {
+        StringBuilder content = new StringBuilder();
+
+        // many of these calls can throw exceptions, so i've just
+        // wrapped them all in one try/catch statement.
+        try
+        {
+            // create a url object
+            URL url = new URL(theUrl);
+
+            // create a urlconnection object
+            URLConnection urlConnection = url.openConnection();
+
+            // wrap the urlconnection in a bufferedreader
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+            String line;
+
+            // read from the urlconnection via the bufferedreader
+            while ((line = bufferedReader.readLine()) != null)
+            {
+                content.append(line + "\n");
+            }
+            bufferedReader.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return content.toString();
     }
 
     /*@GET
