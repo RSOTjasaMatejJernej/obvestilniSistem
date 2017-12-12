@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: obvestilni-service-monitor
+  labels:
+    team: katalogteam
+spec:
+  selector:
+    matchLabels:
+      app: obvestilni-sistem
+  endpoints:
+  - port: server
