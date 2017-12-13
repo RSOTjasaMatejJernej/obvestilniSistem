@@ -10,7 +10,7 @@ spec:
         app: obvestilni-sistem
     spec:
       containers:
-      - image: tjasaj/obvestilni-sistem:0.01
+      - image: tjasaj/obvestilni-sistem:0.02
         name: obvestilni-sistem
         env:
           - name: KUMULUZEE_DISCOVERY_CLUSTER
