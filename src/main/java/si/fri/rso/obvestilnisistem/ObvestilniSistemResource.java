@@ -11,6 +11,9 @@ import javax.ws.rs.core.Response;
 import java.net.*;
 import java.io.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,7 +30,9 @@ public class ObvestilniSistemResource {
     @GET
     @Metered
     public Response getAllProfils() {
-        String output  = getUrlContents("http://api.rtvslo.si/spored/getProvys/TVS1/2017-12-09");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String output  = getUrlContents("http://api.rtvslo.si/spored/getProvys/TVS1/"+dateFormat.format(date));
 
         return Response.ok(output).build();
     }
