@@ -1,2 +1,2 @@
-# obvestilniSistem
-Obvestilni sistem pridobi novice iz API-ja rtvslo ter jih vrne.
+# Mikrostoritev: obvestilni sistem
+Mikrostoritev obvestilni sistem pridobi novice iz API-ja RTV Slovenija ter jih vrne.
