@@ -1,3 +1,2 @@
 # obvestilniSistem
-obvestilni sistem novice
-test
+Obvestilni sistem pridobi novice iz API-ja rtvslo ter jih vrne.
